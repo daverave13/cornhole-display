@@ -1,5 +1,7 @@
 .BeanBag {
-    height: 20px;
-    width: 20px;
+    height: 60px;
+    min-width: 60px;
     margin: 5px;
+    border-radius: 4px;
+    border: solid 3px black;
 }

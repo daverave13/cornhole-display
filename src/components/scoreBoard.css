@@ -88,19 +88,23 @@ body {
 .boards .right {
     height: 500px;
     width: 300px;
-    background-color: rgb(190, 184, 154);
+    background-color: rgb(187, 163, 117);
     border: solid black 4px;
     margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px 2px black;
 }
 
 .top-half {
     justify-content: center;
     position: relative;
-    height: 250px;
+    height: 160px;
 }
 
 .bottom-half {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .circle {

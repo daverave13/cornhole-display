@@ -39,13 +39,21 @@ const Scoreboard = (props) => {
         <div className='score-board'>
             <div className='main-grid'>
                 <div className='top-row right-border'></div>
-                <div className='top-row right-border grid-text'>{teamA}</div>
-                <div className='top-row grid-text'>{teamB}</div>
+                <div className='top-row right-border grid-text'>
+                    {teamA || "loading..."}
+                </div>
+                <div className='top-row grid-text'>{teamB || "loading..."}</div>
                 <div className='bot-row right-border  grid-text'>Game</div>
                 <div className='bot-row right-border score'>
-                    {scoreA + display_scoreA}
+                    {isNaN(scoreA + display_scoreA)
+                        ? "0"
+                        : scoreA + display_scoreA}
                 </div>
-                <div className='bot-row score'>{scoreB + display_scoreB}</div>
+                <div className='bot-row score'>
+                    {isNaN(scoreB + display_scoreB)
+                        ? "0"
+                        : scoreB + display_scoreB}
+                </div>
             </div>
             <div className='spacer'></div>
             <div className='boards'>
