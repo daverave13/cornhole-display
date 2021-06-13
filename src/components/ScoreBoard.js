@@ -10,7 +10,7 @@ const Scoreboard = (props) => {
         const response = await fetch("https://dslusser.com:5000/api/games/", {
             method: "GET",
         }).then((response) => response.json());
-        const currentGame = [...response].sort(
+        const currentGame = [...response].filter(
             (game) => game.game_id === props.selectedGameId
         )[0];
         setGameState(currentGame);
