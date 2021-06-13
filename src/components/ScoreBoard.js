@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import BeanBag from "./BeanBag";
 import "./scoreBoard.css";
 
 const Scoreboard = (props) => {
@@ -9,7 +10,6 @@ const Scoreboard = (props) => {
         const response = await fetch("https://dslusser.com:5000/api/games/", {
             method: "GET",
         }).then((response) => response.json());
-        // console.log(response);
         const currentGame = [...response].sort(
             (game) => game.game_id === props.selectedGameId
         )[0];
@@ -17,11 +17,23 @@ const Scoreboard = (props) => {
     };
 
     useEffect(() => {
-        getGameState();
+        setInterval(function () {
+            getGameState();
+        }, 500);
     }, [props.selectedGameId]);
 
     const { teamA, teamB, scoreA, scoreB, display_scoreA, display_scoreB } =
         gameState;
+
+    let redBeanBags = [];
+    for (let i = 0; i < display_scoreA; i++) {
+        redBeanBags.push(<BeanBag color='red' key={"red" + i} />);
+    }
+
+    let blueBeanBags = [];
+    for (let i = 0; i < display_scoreB; i++) {
+        blueBeanBags.push(<BeanBag color='blue' key={"blue" + i} />);
+    }
 
     return (
         <div className='score-board'>
@@ -36,6 +48,21 @@ const Scoreboard = (props) => {
                 <div className='bot-row score'>{scoreB + display_scoreB}</div>
             </div>
             <div className='spacer'></div>
+            <div className='boards'>
+                <div className='left'></div>
+                <div className='mid'>
+                    <div className='top-half'>
+                        <div className='circle'></div>
+                    </div>
+                    <div className='bottom-half'>{redBeanBags}</div>
+                </div>
+                <div className='right'>
+                    <div className='top-half'>
+                        <div className='circle'></div>
+                    </div>
+                    <div className='bottom-half'>{blueBeanBags}</div>
+                </div>
+            </div>
         </div>
     );
 };

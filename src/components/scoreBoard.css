@@ -72,3 +72,43 @@ body {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
+
+.boards {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    padding-bottom: 50px;
+}
+
+.boards .left {
+    height: auto;
+    width: 100%;
+}
+
+.boards .mid,
+.boards .right {
+    height: 500px;
+    width: 300px;
+    background-color: rgb(190, 184, 154);
+    border: solid black 4px;
+    margin: 0 auto;
+}
+
+.top-half {
+    justify-content: center;
+    position: relative;
+    height: 250px;
+}
+
+.bottom-half {
+    display: flex;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+    top: 50px;
+}
